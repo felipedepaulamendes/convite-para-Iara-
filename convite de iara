@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Para Iara ❤️</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            font-family: Arial, sans-serif;
+
+            background: linear-gradient(
+                135deg,
+                #ffd6e7,
+                #fff5f9
+            );
+        }
+
+        .card {
+            width: 88%;
+            max-width: 400px;
+            padding: 35px 22px;
+
+            background: white;
+            border-radius: 30px;
+
+            text-align: center;
+
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+
+            position: relative;
+            z-index: 5;
+        }
+
+        .top-heart {
+            font-size: 55px;
+            animation: heartbeat 1s infinite;
+        }
+
+        @keyframes heartbeat {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.18);
+            }
+        }
+
+        h1 {
+            margin: 8px 0 15px;
+            color: #e91e63;
+            font-size: 35px;
+        }
+
+        .big-horse {
+            font-size: 75px;
+            margin: 10px 0;
+
+            animation: horse 1.5s infinite;
+        }
+
+        @keyframes horse {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        p {
+            color: #555;
+            font-size: 18px;
+            line-height: 1.5;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 25px;
+        }
+
+        button {
+            border: none;
+            padding: 14px 23px;
+            border-radius: 50px;
+
+            font-size: 17px;
+            font-weight: bold;
+
+            cursor: pointer;
+        }
+
+        #yes {
+            background: #e91e63;
+            color: white;
+
+            box-shadow:
+                0 5px 15px rgba(233,30,99,0.3);
+        }
+
+        #no {
+            background: #eeeeee;
+            color: #555;
+        }
+
+        /* CAVALO */
+
+        #runningHorse {
+            position: fixed;
+            display: none;
+
+            font-size: 48px;
+
+            z-index: 20;
+
+            transition:
+                left 0.45s ease,
+                top 0.45s ease;
+        }
+
+        #horseNo {
+            position: absolute;
+
+            left: 42px;
+            top: 11px;
+
+            background: #eeeeee;
+            color: #555;
+
+            padding: 7px 12px;
+
+            border-radius: 20px;
+
+            font-size: 13px;
+
+            white-space: nowrap;
+        }
+
+        /* SEGUNDA TELA */
+
+        #secondScreen {
+            display: none;
+        }
+
+        .big-heart {
+            font-size: 70px;
+            animation: heartbeat 1s infinite;
+        }
+
+        /* DIAS */
+
+        .days button {
+            display: block;
+
+            width: 100%;
+
+            margin: 9px 0;
+
+            background: #ffe1ec;
+
+            color: #d81b60;
+        }
+
+        /* BOTÃO WHATSAPP */
+
+        #whatsappButton {
+            display: none;
+
+            width: 100%;
+
+            margin-top: 20px;
+
+            background: #25D366;
+
+            color: white;
+
+            font-size: 17px;
+        }
+
+        /* CORAÇÕES */
+
+        .side-heart {
+            position: fixed;
+
+            bottom: -40px;
+
+            z-index: 1;
+
+            pointer-events: none;
+
+            animation: floatHeart linear forwards;
+        }
+
+        @keyframes floatHeart {
+
+            0% {
+                transform:
+                    translateY(0)
+                    scale(0.6);
+
+                opacity: 0;
+            }
+
+            15% {
+                opacity: 0.9;
+            }
+
+            100% {
+                transform:
+                    translateY(-115vh)
+                    scale(1.2);
+
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 380px) {
+
+            .card {
+                padding: 28px 18px;
+            }
+
+            h1 {
+                font-size: 31px;
+            }
+
+            .big-horse {
+                font-size: 65px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+
+            button {
+                padding: 13px 19px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- PRIMEIRA TELA -->
+
+    <div class="card" id="firstScreen">
+
+        <div class="top-heart">
+            ❤️
+        </div>
+
+        <h1>
+            Iara...
+        </h1>
+
+        <div class="big-horse">
+            🐎
+        </div>
+
+        <p>
+            Tenho uma pergunta
+            muito importante...
+        </p>
+
+        <p>
+            <strong>
+                Você aceita sair comigo? 🥰
+            </strong>
+        </p>
+
+        <div class="buttons">
+
+            <button id="yes">
+                SIM ❤️
+            </button>
+
+            <button id="no">
+                NÃO 😢
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- CAVALO -->
+
+    <div id="runningHorse">
+
+        🐎
+
+        <span id="horseNo">
+            NÃO 😢
+        </span>
+
+    </div>
+
+
+    <!-- SEGUNDA TELA -->
+
+    <div class="card" id="secondScreen">
+
+        <div class="big-heart">
+            ❤️
+        </div>
+
+        <h1>
+            EU SABIA! 😍
+        </h1>
+
+        <p>
+            Você aceitou! ❤️
+        </p>
+
+        <p>
+            <strong>
+                Qual dia você está disponível
+                para sair comigo?
+            </strong>
+        </p>
+
+        <div class="days">
+
+            <button onclick="chooseDay('Quarta-feira')">
+                Quarta-feira ❤️
+            </button>
+
+            <button onclick="chooseDay('Quinta-feira')">
+                Quinta-feira 💕
+            </button>
+
+            <button onclick="chooseDay('Sexta-feira')">
+                Sexta-feira 😍
+            </button>
+
+            <button onclick="chooseDay('Outro dia')">
+                Outro dia ✨
+            </button>
+
+        </div>
+
+        <button id="whatsappButton">
+            💌 Enviar minha resposta
+        </button>
+
+    </div>
+
+
+    <script>
+
+        /* CORAÇÕES */
+
+        function createSideHeart() {
+
+            const heart =
+                document.createElement("div");
+
+            heart.className =
+                "side-heart";
+
+            const hearts = [
+                "❤️",
+                "💕",
+                "💗",
+                "💖",
+                "💓"
+            ];
+
+            heart.textContent =
+                hearts[
+                    Math.floor(
+                        Math.random() * hearts.length
+                    )
+                ];
+
+            if (Math.random() < 0.5) {
+
+                heart.style.left =
+                    Math.random() * 13 + "vw";
+
+            } else {
+
+                heart.style.left =
+                    87 +
+                    Math.random() * 13 +
+                    "vw";
+            }
+
+            heart.style.fontSize =
+                18 +
+                Math.random() * 25 +
+                "px";
+
+            heart.style.animationDuration =
+                4 +
+                Math.random() * 4 +
+                "s";
+
+            document.body.appendChild(heart);
+
+            setTimeout(function() {
+                heart.remove();
+            }, 9000);
+        }
+
+        setInterval(
+            createSideHeart,
+            300
+        );
+
+
+        /* CAVALO */
+
+        const noButton =
+            document.getElementById("no");
+
+        const runningHorse =
+            document.getElementById("runningHorse");
+
+
+        function runHorse() {
+
+            noButton.style.visibility =
+                "hidden";
+
+            runningHorse.style.display =
+                "block";
+
+            const maxX =
+                Math.max(
+                    10,
+                    window.innerWidth - 130
+                );
+
+            const maxY =
+                Math.max(
+                    10,
+                    window.innerHeight - 100
+                );
+
+            const x =
+                20 +
+                Math.random() * maxX;
+
+            const y =
+                20 +
+                Math.random() * maxY;
+
+            runningHorse.style.left =
+                x + "px";
+
+            runningHorse.style.top =
+                y + "px";
+
+
+            setTimeout(function() {
+
+                runningHorse.style.display =
+                    "none";
+
+                noButton.style.visibility =
+                    "visible";
+
+            }, 900);
+        }
+
+
+        noButton.addEventListener(
+            "mouseenter",
+            runHorse
+        );
+
+
+        noButton.addEventListener(
+            "touchstart",
+            function(event) {
+
+                event.preventDefault();
+
+                runHorse();
+
+            }
+        );
+
+
+        /* SIM */
+
+        document
+            .getElementById("yes")
+            .addEventListener("click", function() {
+
+                document
+                    .getElementById("firstScreen")
+                    .style.display = "none";
+
+                document
+                    .getElementById("secondScreen")
+                    .style.display = "block";
+
+                runningHorse.style.display =
+                    "none";
+
+
+                for (
+                    let i = 0;
+                    i < 40;
+                    i++
+                ) {
+
+                    setTimeout(
+                        createSideHeart,
+                        i * 50
+                    );
+
+                }
+
+            });
+
+
+        /* ESCOLHER DIA */
+
+        let selectedDay = "";
+
+
+        function chooseDay(day) {
+
+            selectedDay = day;
+
+            const whatsappButton =
+                document.getElementById(
+                    "whatsappButton"
+                );
+
+            whatsappButton.style.display =
+                "block";
+
+
+            whatsappButton.onclick =
+                function() {
+
+                    const phone =
+                        "5531995524789";
+
+                    const message =
+                        "Oi! ❤️ Eu aceito sair com você! 🥰 Posso na " +
+                        selectedDay +
+                        ". 💕";
+
+                    const url =
+                        "https://wa.me/" +
+                        phone +
+                        "?text=" +
+                        encodeURIComponent(message);
+
+                    window.location.href = url;
+                };
+        }
+
+    </script>
+
+</body>
+</html>
